@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body {
+            text-align: center;
+            background: #FF7373;
+            color: #fff;
+            font-family: 'Roboto Mono', monospace;
+        }
+        
+        h1 {
+            font-size: 52px;
+            margin-bottom: 40px;
+        }
+        
+        #timer {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            padding: 10px 30px;
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 0 5px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            border: 1px solid #FF7373;
+            color: #FF7373;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stopwatch</h1>
+    <div id="timer">00:00:00</div>
+    <button id="start">Start</button>
+    <button id="reset">Reset</button>
+    <button id="stop">Stop</button>
+
+    <script>
+        (function() {
+            var timer = document.getElementById("timer");
+            var start = document.getElementById("start");
+            var stop = document.getElementById("stop");
+            var reset = document.getElementById("reset");
+            var hours = 0;
+            var minutes = 0;
+            var seconds = 0;
+            var t;
+
+            function formatTime(value) {
+                return value < 10 ? "0" + value : value;
+            }
+
+            function buildTimer() {
+                seconds++;
+                if (seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                    if (minutes >= 60) {
+                        minutes = 0;
+                        hours++;
+                    }
+                }
+                timer.textContent = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+            }
+
+            function startTimer() {
+                clearTimeout(t);
+                t = setInterval(buildTimer, 1000);
+            }
+
+            function stopTimer() {
+                clearTimeout(t);
+            }
+
+            function resetTimer() {
+                clearTimeout(t);
+                hours = 0;
+                minutes = 0;
+                seconds = 0;
+                timer.textContent = "00:00:00";
+            }
+
+            start.addEventListener("click", startTimer);
+            stop.addEventListener("click", stopTimer);
+            reset.addEventListener("click", resetTimer);
+        })();
+    </script>
+</body>
+</html>

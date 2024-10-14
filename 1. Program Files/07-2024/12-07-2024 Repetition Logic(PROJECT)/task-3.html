@@ -1,0 +1,35 @@
+<!-- Q-3. Write a while loop that adds numbers from 1 to 100 and prints the sum. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 3</title>
+</head>
+
+<body>
+
+    <label for="">Enter Number = <input type="text" id="num"></label> <br><br>
+
+</body>
+
+</html>
+
+<script>
+
+    let num = document.getElementById("num").value
+    num = parseInt(num)
+    let sum = 0
+    let i = 0
+    while (i <= num) {
+        sum = sum + i
+        i++
+    }
+    console.log(sum)
+    document.write(`<center>
+    <h1>Answer =  ${sum}</h1>
+</center>`)
+
+</script>

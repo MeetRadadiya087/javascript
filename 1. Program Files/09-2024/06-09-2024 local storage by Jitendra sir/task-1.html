@@ -1,0 +1,144 @@
+<!-- Q-1. print data and delete operation -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form onsubmit="addData(event)">
+
+        <input type="text" placeholder="Enter your Name" id="name" required>
+
+        <input type="text" placeholder="Enter your Subject" id="subject" required>
+
+        <input type="submit" value="Add Data">
+
+    </form>
+
+    <table border="1">
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+                <th>Subject</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+    </table>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        displayData();
+    });
+
+    function addData(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let subject = document.getElementById("subject").value;
+
+        if (!name || !subject) {
+            alert("Please fill in both fields.");
+            return;
+        }
+
+        let existingData = JSON.parse(localStorage.getItem("Student")) || [];
+
+        let obj = {
+            name: name,
+            subject: subject
+        };
+        existingData.push(obj);
+
+        localStorage.setItem("Student", JSON.stringify(existingData));
+
+        displayData();
+
+        document.getElementById("name").value = "";
+        document.getElementById("subject").value = "";
+
+        getData();
+
+    }
+
+    function getData() {
+        let tbody = Document.getElementById("tbody");
+
+        tbody.innerHTML = " ";
+
+        let allData = JSON.parse(localStorage.getItem("Student")) || [];
+
+        for (let i = 0; i < alldata.length; i++) {
+            let row = tbody.Insertrow();
+            let cell0 = Row.insertcell(0);
+            let cell1 = Row.insertcell(1);
+            let cell2 = Row.insertcell(2);
+            let cell3 = Row.insertcell(3);
+            let cell4 = Row.insertcell(4);
+
+            cell0.innerText = allData[i].id
+            cell1.innerText = allData[i].name
+            cell2.innerText = allData[i].subject
+
+            cell3.innerHTML = '<button class = "deleteBtn" data-id = "${allData[i].id}"> Delete</button>'
+
+            cell4.innerHTML = '<button class = "editBtn" data-id = "${allData[i].id}"> Edit</button>'
+        }
+    }
+
+
+
+    let DeleteBtns = document.querySelectorAll(".deleteBtn");
+
+    DeleteBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            let allData = JSON.parse(localStorage.getItem("Student")) || [];
+
+            let btnId = btn.getAttribute("dtaa-id");
+
+            let remainingData = allData.filter((data) => data.id != btnId)
+
+            localStorage.setItem("student", JSON.stringify(remainingData));
+
+            getData()
+        })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

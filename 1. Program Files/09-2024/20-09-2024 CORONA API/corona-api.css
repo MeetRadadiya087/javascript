@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    /* background-color: black; */
+}
+
+.main {
+    width: 48%;
+    background-color: rgb(100, 136, 235);
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+.name{
+    font-size: 48px;
+}
+
+
+.state {
+    margin: 5px 10px;
+}
+
+.name {
+    margin: 5px 10px;
+}
+
+.twitter {
+    margin: 5px 10px;
+}
+
+.text {
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.note {
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 150px;
+    font-weight: bold;
+    overflow: scroll;
+}
+
+.note::-webkit-scrollbar {
+    display: none;
+}

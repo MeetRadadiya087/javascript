@@ -1,0 +1,44 @@
+<!-- Q-4. Convert dollars into Rupees. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dollars to Rupees Converter</title>
+</head>
+
+<body>
+    <h1>Dollars to Rupees Converter</h1>
+    <p>Convert your dollars to rupees!</p>
+</body>
+
+</html>
+
+<script>
+    function convertDollarsToRupees(dollars) {
+        const conversionRate = 83.5;
+
+        return dollars * conversionRate;
+    }
+
+    function startConversion() {
+        let dollarsInput = prompt("Enter the amount in dollars:");
+        let dollars = parseFloat(dollarsInput);
+
+        if (isNaN(dollars) || dollars < 0) {
+            alert("Please enter a valid positive number for the amount in dollars.");
+            return;
+        }
+
+        let rupees = convertDollarsToRupees(dollars);
+
+        alert(`$${dollars} is approximately ₹${rupees.toFixed(2)}.`);
+    }
+
+    window.onload = function () {
+        startConversion();
+    }
+</script>
+

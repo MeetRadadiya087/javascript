@@ -1,0 +1,49 @@
+<!-- Q-1. Write a program that calculates the ticket price based on age with the following conditions: age below 12 pay a ticket price of 5, age below 18 pay a ticket price of 10, age below 60 pay a ticket price of 20, age over 60 play a ticket price of 15. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Price Calculator</title>
+</head>
+
+<body>
+    <h1>Welcome to the Ticket Price Calculator</h1>
+    <p>Check your ticket price based on your age.</p>
+</body>
+
+</html>
+
+<script>
+    function calculateTicketPrice(age) {
+        if (age < 12) {
+            return 5;
+        } else if (age < 18) {
+            return 10;
+        } else if (age < 60) {
+            return 20;
+        } else {
+            return 15;
+        }
+    }
+
+    function main() {
+        let ageInput = prompt("Enter your age:");
+        let age = parseInt(ageInput);
+
+        if (isNaN(age) || age < 0) {
+            alert("Invalid input. Please enter a valid age.");
+            return;
+        }
+
+        let price = calculateTicketPrice(age);
+
+        alert(`The ticket price for someone aged ${age} is $${price}.`);
+    }
+
+    window.onload = function () {
+        main();
+    }
+</script>

@@ -1,0 +1,31 @@
+<!-- Q-1. Write a for loop that prints all even numbers between 1 and 20. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+</head>
+
+<body>
+
+    <label for="">Enter Number = <input type="text" id="num"></label> <br><br>
+
+</body>
+
+</html>
+
+<script>
+
+    let num = document.getElementById("num").value
+    num = parseInt(num)
+    for (let i = 0; i <= num; i++) {
+        if (i % 2 == 0) {
+            console.log(i)
+            document.write(`<center><h1>${i}</center></h1>`)
+        }
+    }
+
+</script>

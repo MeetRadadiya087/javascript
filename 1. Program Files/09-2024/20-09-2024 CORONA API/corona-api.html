@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORONA API</title>
+    <link rel="stylesheet" href="corona-api.css">
+    <link rel="icon" href="images/corona-virus-informationen.jpg">
+</head>
+
+<body>
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+    fetch("https://api.covidtracking.com/v1/states/info.json")
+
+        .then(Response => {
+            console.log(Response);
+            return Response.json()
+        })
+
+        .then(data => {
+            console.log(data);
+
+            data.forEach(element => {
+
+
+
+                let div = document.createElement("div");
+                div.className = "main"
+
+              
+
+
+
+
+
+                let name = document.createElement("h2");
+                name.className = "name"
+                name.innerText = "Name => "+element.name;
+
+
+                let note = document.createElement("h3")
+                note.className = "text"
+                note.innerText = "Notes => " + element.notes;
+
+
+                let state = document.createElement("h3");
+                state.className = "state";
+                state.innerText = "State => "+element.state;
+
+
+                let twitter = document.createElement("h3");
+                twitter.className = "twitter";
+                twitter.innerText = "Twitter => "+element.twitter;
+
+
+
+
+                let fips = document.createElement("h3");
+                fips.className = "fips";
+                fips.innerText = "Fips => " + element.fips;
+
+
+                let pui = document.createElement("h3");
+                pui.className = "pui";
+                pui.innerText = "PUI => " + element.pui;
+
+
+                let pum = document.createElement("h3");
+                pum.className = "pum";
+                pum.innerText = "PUM => " + element.pum;
+
+
+
+
+
+                div.append(name,state,twitter,pui,pum,fips,note);
+                document.body.append(div);
+
+                
+            });
+        })
+
+</script>

@@ -1,0 +1,36 @@
+<!-- Q-3. On clicking the button Change H5 the colour of all <h5> should turn to blue. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change all H5 Color to Blue</title>
+</head>
+
+<body>
+
+    <button id="changeH5">Change H5</button>
+    <h1>This is the first heading 1.</h1>
+    <h2>This is the first heading 2.</h2>
+    <h3>This is the first heading 3.</h3>
+    <h4>This is the first heading 4.</h4>
+    <h5>This is the first heading 5.</h5>
+
+</body>
+
+</html>
+
+<script>
+
+    function changeH5Color() {
+        var headings = document.getElementsByTagName('h5');
+
+        for (var i = 0; i < headings.length; i++) {
+            headings[i].style.color = 'blue';
+        }
+    }
+
+    document.getElementById('changeH5').addEventListener('click', changeH5Color);
+
+</script>

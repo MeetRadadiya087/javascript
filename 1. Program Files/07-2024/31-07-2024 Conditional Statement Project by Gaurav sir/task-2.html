@@ -1,0 +1,49 @@
+<!-- Q-2. Write a program that calculates a discount based on the purchase amount.Prices equal or over 100 discount have a discount of 20. Prices equal or over 50 have a discount of 10. Otherwise discount is 0. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator</title>
+</head>
+
+<body>
+    <h1>Welcome to the Discount Calculator</h1>
+    <p>Find out your discount based on your purchase amount.</p>
+</body>
+
+</html>
+
+<script>
+    function calculateDiscount(amount) {
+        if (amount >= 100) {
+            return 20;
+        } else if (amount >= 50) {
+            return 10;
+        } else {
+            return 0;
+        }
+    }
+
+    function main() {
+        let amountInput = prompt("Enter the purchase amount:");
+        let amount = parseFloat(amountInput);
+
+        if (isNaN(amount) || amount < 0) {
+            alert("Invalid input. Please enter a valid purchase amount.");
+            return;
+        }
+
+        let discount = calculateDiscount(amount);
+
+        alert(`The discount for a purchase amount of $${amount} is $${discount}.`);
+    }
+
+    window.onload = function () {
+        main();
+    }
+</script>
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD with LocalStorage</title>
+    <link rel="stylesheet" href="task-1.css">
+</head>
+<body>
+
+    <form onsubmit="addData(event)">
+
+        <input type="text" placeholder="Enter your Name" id="name" required>
+        <input type="number" placeholder="Enter your Number" id="number" required>
+        <input type="email" placeholder="Enter your E-mail" id="email" required>
+        <input type="password" placeholder="Enter your Password" id="password" required>
+        <input type="submit" value="Add Data">
+
+    </form>
+
+    <table border="1">
+
+        <thead>
+
+            <tr>
+                
+                <th>Name</th>
+                <th>Number</th>
+                <th>E-mail</th>
+                <th>Password</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+    </table>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayData();
+        });
+
+        function addData(event){
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let number = document.getElementById("number").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (!name || !subject || !email || !password) {
+                alert("Please fill in both fields.");
+                return;
+            }
+
+            let existingData = JSON.parse(localStorage.getItem("Student")) || [];
+
+            let obj = {
+                name: name,
+                number: number,
+                email: email,
+                password: password
+            };
+            existingData.push(obj);
+
+            localStorage.setItem("Student", JSON.stringify(existingData));
+
+            displayData();
+
+            document.getElementById("name").value = "";
+            document.getElementById("number").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+        }
+
+
+
+
+
+        function displayData() {
+            let existingData = JSON.parse(localStorage.getitem("Student")) || [];
+            let tbody = document.getElementById("tbody");
+            tbody.innerHTML = "";
+
+            existingData.forEach((data, index) => {
+                let tr = document.createElement('tr');
+                let tdName = document.createElement('td');
+                let tdNumber = document.createElement('td');
+                let tdEmail = document.createElement('td');
+                let tdPassword = document.createElement('td');
+
+                tdName.textContent = data.name;
+                tdNumber.textContent = data.number;
+                tdEmail.textContent = data.email;
+                tdPassword.textContent = data.password;
+
+                tr.appendChild(tdName);
+                tr.appendChild(tdNumber);
+                tr.appendChild(tdEmail);
+                tr.appendChild(tdPassword);
+                tbody.appendChild(tr);
+            });
+        }
+
+        
+
+
+    </script>
+    
+</body>
+</html>

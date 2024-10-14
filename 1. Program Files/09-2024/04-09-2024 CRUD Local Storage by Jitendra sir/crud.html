@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <link rel="stylesheet" href="crud.css">
+</head>
+
+<body>
+
+    <form onsubmit="addData(event)">
+
+        <input type="text" placeholder="Enter your Name" id="name" required>
+
+        <input type="text" placeholder="Enter your Subject" id="subject" required>
+
+        <input type="submit" value="Add Data">
+
+    </form>
+
+    <table border="1">
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+                <th>Subject</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="tbody"></tbody>
+
+    </table>
+
+</body>
+
+</html>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', () => {
+        displayData();
+    });
+
+    function addData(event) {
+        event.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let subject = document.getElementById("subject").value;
+
+        if (!name || !subject) {
+            alert("Please fill in both fields.");
+            return;
+        }
+
+        let existingData = JSON.parse(localStorage.getItem("Student")) || [];
+
+        let obj = {
+            name: name,
+            subject: subject
+        };
+        existingData.push(obj);
+
+        localStorage.setItem("Student", JSON.stringify(existingData));
+
+        displayData();
+
+        document.getElementById("name").value = "";
+        document.getElementById("subject").value = "";
+    }
+
+    function displayData() {
+        let existingData = JSON.parse(localStorage.getItem("Student")) || [];
+        let tbody = document.getElementById("tbody");
+        tbody.innerHTML = "";
+
+        existingData.forEach((data, index) => {
+            let tr = document.createElement('tr');
+            let tdName = document.createElement('td');
+            let tdSubject = document.createElement('td');
+
+            tdName.textContent = data.name;
+            tdSubject.textContent = data.subject;
+
+            tr.appendChild(tdName);
+            tr.appendChild(tdSubject);
+            tbody.appendChild(tr);
+        });
+    }
+
+</script>
+
+

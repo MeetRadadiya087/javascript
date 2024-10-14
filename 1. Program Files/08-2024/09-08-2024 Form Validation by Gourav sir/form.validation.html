@@ -1,0 +1,84 @@
+<!-- Q-1. Create JS Form Validation name , password , confirm password, date , hobby , email , gender
+            ** If user don't fill all input box show alert
+            ** Check if password is of length more than 8
+            ** Check if password equals to confirm password
+            ** Add good UI to the page -->
+
+
+            <!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
+    <link rel="stylesheet" href="form.validation.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>Registration</h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="input-box">
+                <input type="text" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="pass" placeholder="Create password" required>
+            </div>
+            <div class="input-box">
+                <input type="password" id="conf" placeholder="Confirm password" required>
+            </div>
+
+            <!-- <div class="input-box">
+                
+                <label>HOBBY : </label>
+
+                    <input type="checkbox" id="hobby">Volley Ball
+                    <input type="checkbox" id="hobby">Cricket
+
+            </div> -->
+
+
+
+            <div class="policy">
+                <input type="checkbox">
+                <h3>I accept all terms & condition</h3>
+            </div>
+            <div class="input-box button">
+
+                <a href="submit-page.html" id="button">
+
+                    <button type="submit" id="form">Register Now</button>
+
+                    <!-- <input type="Submit" id="form" value="Register Now"> -->
+
+                </a>
+                
+            </div>
+            <div class="text">
+                <h3>Already have an account? <a href="login-page.html">Login now</a></h3>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
+
+
+
+
+
+
+<script>
+
+    document.getElementById("form").addEventListener("click",function(){
+        const password = document.getElementById('pass').value
+        if(password.length<=7){
+            alert("please enter atleast 8 word password")
+        }
+    })
+
+</script>
+
